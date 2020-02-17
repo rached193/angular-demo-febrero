@@ -1,0 +1,12 @@
+<div>
+  <input placeholder="A" type="number" (change)="campoA= $event.target.value"> {{campoA}}
+  <input placeholder="B" type="number" (change)="campoB= $event.target.value"> {{campoB}}
+  <div>
+    <button (click)="resultados = sumar(campoA,campoB)">+</button>
+    <button (click)="resultados = restar(campoA,campoB)">-</button>
+    <button (click)="resultados = multiplicacion(campoA,campoB)">*</button>
+    <button (click)="resultados = division(campoA,campoB)">/</button>
+
+  </div>
+  Resultado: {{resultados | doblar}}
+</div>

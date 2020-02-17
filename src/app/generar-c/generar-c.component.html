@@ -1,0 +1,35 @@
+<!-- <div>
+  <p (click)="click($event)">{{nombre}}</p>
+  <p>{{apellidos}}</p>
+  <p>{{direccion}}</p>
+</div>
+
+=================================================
+<div>
+  {{2*20+1}}
+  {{'Title: ' + getTitle()}}
+</div>
+
+
+=================================================
+<div dirSobresaltar [color]="color">
+  Se han realizado {{cuenta}} clicks
+  <button (click)="sumar()">SUMA</button>
+</div>
+
+
+=================================================
+<dir-calculadora dirSobresaltar >
+</dir-calculadora>
+
+
+=================================================
+
+<div><span><button (click)="mostrar=!mostrar">IF</button></span>
+  <div *ngIf="mostrar"> dentro del if</div>
+</div> -->
+<button routerLink="/calculadora">Calculadora</button>
+<button routerLink="/calculadora/32">Calculadora A</button>
+<button routerLink="/calculadora/56">Calculadora B</button>
+<button routerLink="">Otro</button>
+<router-outlet></router-outlet>
