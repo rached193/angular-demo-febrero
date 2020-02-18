@@ -9,7 +9,8 @@ import { HijoComponent } from './hijo/hijo.component';
 
 import { SobresaltarDirective } from './sobresaltar.directive';
 import { OtroComponent } from './otro/otro.component';
-import { CaluladoraModule } from './calculadora/caluladora/caluladora.module';
+import { AgendaModule } from './agenda/agenda.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -23,7 +24,9 @@ import { CaluladoraModule } from './calculadora/caluladora/caluladora.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AgendaModule,
+    HttpClientModule
     ],
   providers: [],
   bootstrap: [GenerarCComponent]

@@ -3,15 +3,17 @@ import { Routes, RouterModule } from '@angular/router';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { OtroComponent } from './otro/otro.component';
 import { CalculadoraGuardService } from './calcudora/calculadora-guard.service';
+import { AgendaComponent } from './agenda/agenda.component';
 
 
 const routes: Routes = [
   {
     path: 'calculadora',
     loadChildren: () => import('./calculadora/caluladora/caluladora.module')
-    .then(m => m.CaluladoraModule),
+      .then(m => m.CaluladoraModule),
   },
-  { path: '', component: OtroComponent }
+  { path: '', component: OtroComponent },
+  { path: 'agenda', component: AgendaComponent }
 ];
 
 @NgModule({
