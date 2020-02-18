@@ -1,13 +1,9 @@
-import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, ContentChild, ViewChild } from '@angular/core';
 import { AgendaService } from './agenda.service';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
+import { MatSort } from '@angular/material/sort';
+import { switchMap, startWith } from 'rxjs/operators';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { combineLatest } from 'rxjs';
 
 
 @Component({
@@ -18,14 +14,27 @@ export interface PeriodicElement {
 export class AgendaComponent implements OnInit {
 
   dataSource = [];
+  resultsLength = 0;
   displayedColumns: string[] = ['userId', 'id', 'title', 'completed'];
+
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) page: MatPaginator;
 
   constructor(private agendaService: AgendaService) { }
 
   ngOnInit(): void {
-    this.agendaService.getTodos().subscribe(data => {
-      this.dataSource = data;
-    });
+    combineLatest(
+      this.sort.sortChange.pipe(startWith({})),
+      this.page.page.pipe(startWith({ pageSize: 10, pageIndex: 0 }))
+    )
+      .pipe(
+        switchMap(([sort, page]) => {
+          return this.agendaService.getTodos(sort, page as PageEvent);
+        })
+      ).subscribe(info => {
+        this.dataSource = info.data;
+        this.resultsLength = info.length;
+      });
   }
 
 }
