@@ -4,6 +4,7 @@ import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { OtroComponent } from './otro/otro.component';
 import { CalculadoraGuardService } from './calcudora/calculadora-guard.service';
 import { AgendaComponent } from './agenda/agenda.component';
+import { FormTComponent } from './form-test/form-t/form-t.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
       .then(m => m.CaluladoraModule),
   },
   { path: '', component: OtroComponent },
-  { path: 'agenda', component: AgendaComponent }
+  { path: 'agenda', component: AgendaComponent },
+  { path: 'form', component: FormTComponent }
 ];
 
 @NgModule({

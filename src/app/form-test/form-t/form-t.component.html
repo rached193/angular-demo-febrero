@@ -1,0 +1,22 @@
+<form [formGroup]="registerForm">
+  <div>
+     <label>Firstname:</label>
+      <input type="text" formControlName="firstname">
+      <p *ngIf="registerForm.controls.firstname.touched&& registerForm.controls.firstname.errors">This field is required!</p>
+  </div>
+
+  <div>
+    <label>Email:</label>
+     <input type="text" formControlName="email">
+     <p *ngIf="registerForm.controls.email.getError('required')">This field is required!</p>
+     <p *ngIf="registerForm.controls.email.getError('email')">This email is not valid</p>
+ </div>
+
+ <div>
+  <label>Edad:</label>
+   <input type="number" formControlName="edad">
+   <p *ngIf="registerForm.controls.edad.getError('required')">This field is required!</p>
+   <p *ngIf="registerForm.controls.edad.getError('mayor')">Es demasiado mayor</p>
+</div>
+</form>
+{{registerForm.value | json}}

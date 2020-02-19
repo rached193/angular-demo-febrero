@@ -11,6 +11,7 @@ import { SobresaltarDirective } from './sobresaltar.directive';
 import { OtroComponent } from './otro/otro.component';
 import { AgendaModule } from './agenda/agenda.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FormTestModule } from './form-test/form-test.module';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     AgendaModule,
-    HttpClientModule
+    HttpClientModule,
+    FormTestModule
     ],
   providers: [],
   bootstrap: [GenerarCComponent]
