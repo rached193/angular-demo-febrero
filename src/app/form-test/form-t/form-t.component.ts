@@ -19,15 +19,14 @@ export class FormTComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       firstname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      edad: [{ value: 0, disabled: true }, [ValidatorMayor]]
+      edad: [{ value: 0, disabled: true }, [ValidatorMayor(10)]]
     }
     );
 
     combineLatest([
       this.registerForm.get('firstname').valueChanges,
       this.registerForm.get('email').valueChanges
-    ]
-    )
+    ])
       .pipe(debounceTime(1000))
       .subscribe(([x, y]) => {
         if (x && this.registerForm.get('email').valid) {
@@ -36,8 +35,6 @@ export class FormTComponent implements OnInit {
         } else {
           this.registerForm.get('edad').disable();
         }
-        console.log(x)
-        console.log(y)
       });
   }
 
