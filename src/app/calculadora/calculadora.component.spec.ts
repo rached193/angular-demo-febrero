@@ -35,13 +35,13 @@ describe('Calculadora Component', () => {
 
       const DATA_2 = 2;
       const DATA_4 = 4;
-      
+
       it('should be exist', () => {
         expect(component.division).toBeDefined();
       });
 
       it('case base', () => {
-        expect(component.sumar(DATA_2, DATA_2)).toBe(DATA_4);
+        expect(component.division(DATA_4, DATA_2)).toBe(DATA_2);
       });
 
     });
