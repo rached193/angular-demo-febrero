@@ -13,19 +13,10 @@ export class CalculadoraComponent implements OnInit {
 
   resultados = 0;
 
-  constructor(private activeRoute: ActivatedRoute) {
-
-  }
+  constructor() {}
 
   ngOnInit(): void {
 
-    this.activeRoute.data.subscribe(data => {
-      console.log(data);
-    })
-    this.activeRoute.params.subscribe(params => {
-      console.log(params.id);
-    })
-    
   }
 
   sumar(a: number, b: number): number {
