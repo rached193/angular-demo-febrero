@@ -27,8 +27,9 @@ export class FormTComponent implements OnInit {
       this.registerForm.get('firstname').valueChanges,
       this.registerForm.get('email').valueChanges
     ])
-      .pipe(debounceTime(1000))
+       .pipe(debounceTime(1000))
       .subscribe(([x, y]) => {
+        console.log(x)
         if (x && this.registerForm.get('email').valid) {
           this.registerForm.get('edad').enable();
 

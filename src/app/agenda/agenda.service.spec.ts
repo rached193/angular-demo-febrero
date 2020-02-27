@@ -6,12 +6,13 @@ import { PageEvent } from '@angular/material/paginator';
 
 
 class StubHttp {
-  get() {
+  get(url: string) {
     return of([true, true, true, true]);
   }
 }
 describe('AgendaService', () => {
   let service: AgendaService;
+  let http: StubHttp;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -21,6 +22,7 @@ describe('AgendaService', () => {
       ]
     });
     service = TestBed.get(AgendaService);
+    http = TestBed.get(HttpClient);
   });
 
   it('should be exist', () => {
@@ -35,8 +37,15 @@ describe('AgendaService', () => {
       length: 100
     };
 
+    beforeEach(() => {
+      spyOn(http, 'get').and.callThrough();
+    });
+
+
     // Act
     it('return data', () => {
+
+
       service.getTodos(null, DATA).subscribe(info => {
         // Assert
         expect(info).toEqual(
@@ -44,6 +53,7 @@ describe('AgendaService', () => {
             data: [true, true, true, true],
             length: 4
           });
+        expect(http.get).toHaveBeenCalledWith('https://jsonplaceholder.typicode.com/todos');
       });
     });
 
